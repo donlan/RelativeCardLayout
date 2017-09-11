@@ -23,8 +23,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
@@ -49,6 +51,10 @@ public class RelativeCarView extends RelativeLayout {
     private boolean isAnim = false;
     private Paint paint;
     private RectF bound;
+    private int startColor;
+    private int centerColor;
+    private int endColor;
+    private boolean isUseGradient = false;
 
     public RelativeCarView(Context context) {
         this(context, null);
@@ -74,6 +80,10 @@ public class RelativeCarView extends RelativeLayout {
             isAnim = ta.getBoolean(R.styleable.RelativeCarView_rcv_anim, false);
             marginX = ta.getDimensionPixelSize(R.styleable.RelativeCarView_rcv_marginX, marginX);
             marginY = ta.getDimensionPixelSize(R.styleable.RelativeCarView_rcv_marginY, marginY);
+            startColor = ta.getColor(R.styleable.RelativeCarView_rcv_gradientStartColor,backgroundColor);
+            centerColor= ta.getColor(R.styleable.RelativeCarView_rcv_gradientCenterColor,backgroundColor);
+            endColor = ta.getColor(R.styleable.RelativeCarView_rcv_gradientEndColor,backgroundColor);
+            isUseGradient = ta.getBoolean(R.styleable.RelativeCarView_rcv_userGradient,false);
             ta.recycle();
         }
         bound = new RectF(0, 0, 0, 0);
@@ -81,6 +91,7 @@ public class RelativeCarView extends RelativeLayout {
         paint.setAntiAlias(true);
         paint.setShadowLayer(elevation, 0, 0, elevationColor);
         setLayerType(LAYER_TYPE_SOFTWARE, null);
+
     }
 
 
@@ -97,6 +108,13 @@ public class RelativeCarView extends RelativeLayout {
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
+        if(paint.getShader() == null && isUseGradient){
+            LinearGradient gradient = new LinearGradient(0, getHeight() / 2, getWidth(), getHeight() / 2,
+                    new int[]{startColor, centerColor, endColor},
+                    new float[]{0, 0.5f, 1},
+                    Shader.TileMode.CLAMP);
+            paint.setShader(gradient);
+        }
         paint.setColor(backgroundColor);
         bound.set(marginX, marginY, getWidth() - marginX, getHeight() - marginY);
         canvas.drawRoundRect(bound, radius, radius, paint);

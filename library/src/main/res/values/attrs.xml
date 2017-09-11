@@ -26,6 +26,10 @@
         <attr name="rcv_elevationColor" format="color" />
         <attr name="rcv_radius" format="dimension" />
         <attr name="rcv_anim" format="boolean" />
+        <attr name="rcv_userGradient" format="boolean"/>
+        <attr name="rcv_gradientStartColor" format="color" />
+        <attr name="rcv_gradientEndColor" format="color" />
+        <attr name="rcv_gradientCenterColor" format="color" />
     </declare-styleable>
 
 </resources>

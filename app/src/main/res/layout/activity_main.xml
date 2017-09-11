@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<dong.lan.library.RelativeCarView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:rcv_userGradient="true"
+    app:rcv_radius="4dp"
+    app:rcv_marginX="10dp"
+    app:rcv_marginY="10dp"
+    app:rcv_elevation="6dp"
+    app:rcv_elevationColor="#aaa"
+    app:rcv_anim="false"
+    app:rcv_backgroundColor="@color/colorPrimaryDark"
+    app:rcv_gradientStartColor="@color/colorAccent"
+    app:rcv_gradientCenterColor="@color/colorPrimary"
+    app:rcv_gradientEndColor="@color/colorPrimaryDark"
     tools:context="dong.lan.relativecardlayout.MainActivity">
 
     <TextView
@@ -15,4 +26,4 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+</dong.lan.library.RelativeCarView>

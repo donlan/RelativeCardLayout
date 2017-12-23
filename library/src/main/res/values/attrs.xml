@@ -30,6 +30,16 @@
         <attr name="rcv_gradientStartColor" format="color" />
         <attr name="rcv_gradientEndColor" format="color" />
         <attr name="rcv_gradientCenterColor" format="color" />
+        <!--针对各个角的半径-->
+        <attr name="rcv_corner_top_left" format="dimension"/>
+        <attr name="rcv_corner_top_right" format="dimension"/>
+        <attr name="rcv_corner_bottom_left" format="dimension"/>
+        <attr name="rcv_corner_bottom_right" format="dimension"/>
+        <!--描边颜色／半径-->
+        <attr name="rcv_stroke_color" format="color"/>
+        <attr name="rcv_stroke_width" format="dimension"/>
     </declare-styleable>
+
+
 
 </resources>
